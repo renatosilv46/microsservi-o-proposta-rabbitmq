@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PropostaRepositoryJpa extends JpaRepository<PropostaEntity, Long> {
 
-    // Query derivada
+    /* Query derivada */
     List<PropostaEntity> findAllByIntegradaIsFalse();
 }

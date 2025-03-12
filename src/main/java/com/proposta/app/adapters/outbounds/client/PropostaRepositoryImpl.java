@@ -31,7 +31,8 @@ public class PropostaRepositoryImpl implements PropostaRepository {
 
     @Override
     public Proposta criarProposta(Proposta proposta) {
-        PropostaEntity propostaCriada = propostaRepositoryJpa.save(propostaToPropostaEntityMapper.mapper(proposta));
+        PropostaEntity propostaCriada = propostaRepositoryJpa
+                .save(propostaToPropostaEntityMapper.mapper(proposta));
         return propostaEntityToPropostaMapper.mapper(propostaCriada);
     }
 

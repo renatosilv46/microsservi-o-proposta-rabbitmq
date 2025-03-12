@@ -11,10 +11,12 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
     private final NotificacaoRabbitService notificacaoRabbitService;
     private final String exchange;
 
-    public PropostasNaoIntegradasImpl(PropostaRepository propostaRepository,
-                                      NotificacaoRabbitService notificacaoRabbitService,
-                                      @Value("${rabbitMQ-proposta-pendente-exchange}")
-                                      String exchange) {
+    public PropostasNaoIntegradasImpl(
+            PropostaRepository propostaRepository,
+            NotificacaoRabbitService notificacaoRabbitService,
+            @Value("${rabbitMQ-proposta-pendente-exchange}")
+            String exchange)
+    {
         this.propostaRepository = propostaRepository;
         this.notificacaoRabbitService = notificacaoRabbitService;
         this.exchange = exchange;

@@ -1,12 +1,12 @@
 package com.proposta.app.adapters.outbounds.message;
 
 import com.proposta.app.application.core.domain.Proposta;
-import com.proposta.app.application.ports.outbounds.NotificacaoService;
+import com.proposta.app.application.ports.outbounds.NotificacaoRabbitService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotificacaoRabbitServiceImpl implements NotificacaoService {
+public class NotificacaoRabbitServiceImpl implements NotificacaoRabbitService {
 
     private RabbitTemplate rabbitTemplate;
 

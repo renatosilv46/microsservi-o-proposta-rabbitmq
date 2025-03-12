@@ -8,7 +8,6 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface PropostaRequestToPropostaMapper {
-
     @Mappings({
             @Mapping(target = "usuario.nome", source = "nome"),
             @Mapping(target = "usuario.sobrenome", source = "sobrenome"),

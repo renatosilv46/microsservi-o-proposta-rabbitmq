@@ -21,5 +21,4 @@ public interface PropostaToPropostaResponseMapper {
     default String setValorSolicitadoFmt(Proposta proposta) {
         return NumberFormat.getCurrencyInstance().format(proposta.getValorSolicitado());
     }
-
 }
