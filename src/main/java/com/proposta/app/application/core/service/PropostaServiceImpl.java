@@ -17,7 +17,7 @@ public class PropostaServiceImpl implements PropostaService {
     private final String exchangePendente;
 
     public PropostaServiceImpl(PropostaRepository propostaRepository,
-                               NotificacaoRabbitService notificacaoService, NotificacaoRabbitService notificacaoRabbitService,
+                               NotificacaoRabbitService notificacaoRabbitService,
                                @Value("${rabbitMQ-proposta-pendente-exchange}")
                                String exchangePendente)
     {
