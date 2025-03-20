@@ -25,17 +25,17 @@ public class RabbitMQConfiguration {
 
     @Bean
     public Queue criarFilaPropostaPendenteToNotificacao() {
-        return QueueBuilder.durable("proposta-pendente.to.Notificacao").build();
+        return QueueBuilder.durable("proposta-pendente.to.notificacao").build();
     }
 
     @Bean
     public Queue criarFilaPropostaConcluidaToProposta() {
-        return QueueBuilder.durable("proposta-concluida.to.Proposta").build();
+        return QueueBuilder.durable("proposta-concluida.to.proposta").build();
     }
 
     @Bean
     public Queue criarFilaPropostaConcluidaToNotificacao() {
-        return QueueBuilder.durable("proposta-concluida.to.Notificacao").build();
+        return QueueBuilder.durable("proposta-concluida.to.notificacao").build();
     }
 
     // Criação do RabbitAdmin

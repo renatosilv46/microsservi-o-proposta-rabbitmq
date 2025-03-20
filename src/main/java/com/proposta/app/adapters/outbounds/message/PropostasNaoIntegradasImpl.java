@@ -41,8 +41,10 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
                 IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS);
         propostaRepository.obterPropostasNaoIntegradas().forEach(proposta -> {
             try {
-                notificacaoRabbitService.notificar(proposta, exchange);
+                this.notificacaoRabbitService.notificar(proposta, exchange);
                 atualizarPropostaComStatusIntegrada(proposta);
+                log.info("{}: Proposta integrada com sucesso | Proposta: {}",
+                        IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS, proposta);
             } catch(RuntimeException ex) {
                 log.info("{}: Não foi possível integrar a proposta",
                         IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS);
@@ -54,6 +56,6 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
         log.info("{}: Atualizando proposta com status integrada | Proposta: {}",
                 IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS, proposta);
         proposta.setIntegrada(true);
-        propostaRepository.criarProposta(proposta);
+        this.propostaRepository.criarProposta(proposta);
     }
 }

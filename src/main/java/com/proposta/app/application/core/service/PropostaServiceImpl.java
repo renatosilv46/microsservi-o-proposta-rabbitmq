@@ -16,10 +16,10 @@ public class PropostaServiceImpl implements PropostaService {
     private final NotificacaoRabbitService notificacaoRabbitService;
     private final String exchangePendente;
 
-    public PropostaServiceImpl(PropostaRepository propostaRepository,
-                               NotificacaoRabbitService notificacaoRabbitService,
+    public PropostaServiceImpl(final PropostaRepository propostaRepository,
+                               final NotificacaoRabbitService notificacaoRabbitService,
                                @Value("${rabbitMQ-proposta-pendente-exchange}")
-                               String exchangePendente)
+                               final String exchangePendente)
     {
         this.propostaRepository = propostaRepository;
         this.notificacaoRabbitService = notificacaoRabbitService;
@@ -29,7 +29,7 @@ public class PropostaServiceImpl implements PropostaService {
     @Override
     public Proposta criarProposta(Proposta proposta) {
         Proposta response = propostaRepository.criarProposta(proposta);
-        notificarRabbitMQ(proposta);
+        this.notificarRabbitMQ(proposta);
         return response;
     }
 
@@ -40,10 +40,15 @@ public class PropostaServiceImpl implements PropostaService {
 
     public void notificarRabbitMQ(Proposta proposta) {
         try {
-            notificacaoRabbitService.notificar(proposta, exchangePendente);
+            this.notificacaoRabbitService.notificar(proposta, exchangePendente);
         } catch(RuntimeException ex) {
-            proposta.setIntegrada(false);
-            propostaRepository.criarProposta(proposta);
+            this.criarPropostaNaoIntegrada(proposta);
         }
     }
+
+    public void criarPropostaNaoIntegrada(Proposta proposta) {
+        proposta.setIntegrada(false);
+        this.propostaRepository.criarProposta(proposta);
+    }
+
 }
