@@ -42,7 +42,7 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
         propostaRepository.obterPropostasNaoIntegradas().forEach(proposta -> {
             try {
                 this.notificacaoRabbitService.notificar(proposta, exchange);
-                atualizarPropostaComStatusIntegrada(proposta);
+                this.atualizarPropostaComStatusIntegrada(proposta);
                 log.info("{}: Proposta integrada com sucesso | Proposta: {}",
                         IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS, proposta);
             } catch(RuntimeException ex) {
