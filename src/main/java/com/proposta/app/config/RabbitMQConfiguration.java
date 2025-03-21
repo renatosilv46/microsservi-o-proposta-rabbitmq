@@ -16,6 +16,8 @@ public class RabbitMQConfiguration {
 
     @Value("${rabbitMQ-proposta-pendente-exchange}")
     private String exchangePendente;
+    @Value("${rabbitMQ-proposta-concluida-exchange}")
+    private String exchangeConcluida;
 
     // Criação das filas
     @Bean
@@ -56,6 +58,11 @@ public class RabbitMQConfiguration {
         return ExchangeBuilder.fanoutExchange(exchangePendente).build();
     }
 
+    @Bean
+    public FanoutExchange criarFanoutExchangePropostaConcluida() {
+        return ExchangeBuilder.fanoutExchange(exchangeConcluida).build();
+    }
+
     // Criação do binding responsável por ligar a exchange a uma determinada fila
     @Bean
     public Binding criarBindingPropostaPendenteToAnaliseCredito() {
@@ -67,6 +74,18 @@ public class RabbitMQConfiguration {
     public Binding criarBindingPropostaPendenteToNotificacao() {
         return BindingBuilder.bind(criarFilaPropostaPendenteToNotificacao())
                 .to(criarFanoutExchangePropostaPendente());
+    }
+
+    @Bean
+    public Binding criarBindingPropostaConcluidaToProposta() {
+        return BindingBuilder.bind(criarFilaPropostaConcluidaToProposta())
+                .to(criarFanoutExchangePropostaConcluida());
+    }
+
+    @Bean
+    public Binding criarBindingPropostaConcluidaToNotificacao() {
+        return BindingBuilder.bind(criarFilaPropostaConcluidaToNotificacao())
+                .to(criarFanoutExchangePropostaConcluida());
     }
 
     @Bean
