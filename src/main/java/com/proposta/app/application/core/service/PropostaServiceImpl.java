@@ -8,11 +8,10 @@ import com.proposta.app.application.ports.outbounds.PropostaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
 public class PropostaServiceImpl implements PropostaService {
 
     private static Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
@@ -36,7 +35,7 @@ public class PropostaServiceImpl implements PropostaService {
     public Proposta criarProposta(Proposta proposta) {
         log.info("{} Criando proposta", IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE);
         Proposta response = propostaRepository.criarProposta(proposta);
-        this.notificarRabbitMQ(proposta);
+        this.notificarRabbitMQ(response);
         log.info("{} Proposta criada com sucesso",
                 IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE);
         return response;

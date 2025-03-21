@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Repository
 public class PropostaRepositoryImpl implements PropostaRepository {
 
@@ -31,9 +30,9 @@ public class PropostaRepositoryImpl implements PropostaRepository {
 
     @Override
     public Proposta criarProposta(Proposta proposta) {
-        PropostaEntity propostaCriada = propostaRepositoryJpa
+        PropostaEntity propostaCriada = this.propostaRepositoryJpa
                 .save(propostaToPropostaEntityMapper.mapper(proposta));
-        return propostaEntityToPropostaMapper.mapper(propostaCriada);
+        return this.propostaEntityToPropostaMapper.mapper(propostaCriada);
     }
 
     @Override
