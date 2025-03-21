@@ -9,7 +9,7 @@ public record PropostaResponse(
         Double renda,
         String valorSolicitadoFmt,
         int prazoPagamento,
-        Boolean aprovado,
+        Boolean aprovada,
         String observacao
 ) {
 }

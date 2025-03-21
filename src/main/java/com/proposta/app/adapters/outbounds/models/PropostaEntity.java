@@ -16,7 +16,7 @@ public class PropostaEntity {
 
     private Double valorSolicitado;
     private int prazoPagamento;
-    private Boolean aprovado;
+    private Boolean aprovada;
     private boolean integrada;
     private String observacao;
 
@@ -48,12 +48,12 @@ public class PropostaEntity {
         this.prazoPagamento = prazoPagamento;
     }
 
-    public Boolean getAprovado() {
-        return aprovado;
+    public Boolean getAprovada() {
+        return aprovada;
     }
 
-    public void setAprovado(Boolean aprovado) {
-        this.aprovado = aprovado;
+    public void setAprovada(Boolean aprovada) {
+        this.aprovada = aprovada;
     }
 
     public boolean isIntegrada() {

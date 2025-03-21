@@ -15,7 +15,7 @@ public interface PropostaRequestToPropostaMapper {
             @Mapping(target = "usuario.cpf", source = "cpf"),
             @Mapping(target = "usuario.renda", source = "renda"),
             @Mapping(target = "id", ignore = true),
-            @Mapping(target = "aprovado", ignore = true),
+            @Mapping(target = "aprovada", ignore = true),
             @Mapping(target = "integrada", constant = "true"),
             @Mapping(target = "observacao", ignore = true),
             @Mapping(target = "usuario", ignore = true)
