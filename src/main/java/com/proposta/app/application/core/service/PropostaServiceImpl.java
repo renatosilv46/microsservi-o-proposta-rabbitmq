@@ -14,8 +14,8 @@ import java.util.List;
 
 public class PropostaServiceImpl implements PropostaService {
 
-    private static Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
-    private final String IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE = "[PropostaServiceImpl]";
+    private static final Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
+    private static final String IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE = "[PropostaServiceImpl]";
 
     private final PropostaRepository propostaRepository;
     private final NotificacaoRabbitService notificacaoRabbitService;
@@ -33,10 +33,11 @@ public class PropostaServiceImpl implements PropostaService {
 
     @Override
     public Proposta criarProposta(Proposta proposta) {
-        log.info("{} Criando proposta", IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE);
+        log.info("{} Processando proposta recebida",
+                IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE);
         Proposta response = propostaRepository.criarProposta(proposta);
         this.notificarRabbitMQ(response);
-        log.info("{} Proposta criada com sucesso",
+        log.info("{} Proposta processada e criada com sucesso",
                 IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE);
         return response;
     }

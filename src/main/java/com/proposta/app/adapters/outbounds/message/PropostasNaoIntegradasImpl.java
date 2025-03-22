@@ -17,7 +17,7 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
 
     private static Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
     private static final String IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS =
-            "[PropostasNaoIntegradasImpl]";
+            "[PropostasNaoIntegradas]";
 
     private final PropostaRepository propostaRepository;
     private final NotificacaoRabbitService notificacaoRabbitService;
@@ -53,7 +53,7 @@ public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
     }
 
     public void atualizarPropostaComStatusIntegrada(Proposta proposta) {
-        log.info("{}: Atualizando proposta com status integrada | Proposta: {}",
+        log.info("{}: Atualizando status da proposta para integrada | Proposta: {}",
                 IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS, proposta);
         proposta.setIntegrada(true);
         this.propostaRepository.criarProposta(proposta);
