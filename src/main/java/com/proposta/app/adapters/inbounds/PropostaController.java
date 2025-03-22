@@ -5,6 +5,7 @@ import com.proposta.app.adapters.inbounds.mapper.PropostaToPropostaResponseMappe
 import com.proposta.app.adapters.inbounds.models.PropostaRequest;
 import com.proposta.app.adapters.inbounds.models.PropostaResponse;
 import com.proposta.app.application.ports.inbounds.PropostaService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/proposta")
 public class PropostaController {
@@ -24,16 +26,6 @@ public class PropostaController {
     private final PropostaService propostaService;
     private final PropostaRequestToPropostaMapper propostaRequestToPropostaMapper;
     private final PropostaToPropostaResponseMapper propostaToPropostaResponseMapper;
-
-    public PropostaController(
-            final PropostaService propostaService,
-            final PropostaRequestToPropostaMapper propostaRequestToPropostaMapper,
-            final PropostaToPropostaResponseMapper propostaToPropostaResponseMapper
-    ){
-        this.propostaService = propostaService;
-        this.propostaRequestToPropostaMapper = propostaRequestToPropostaMapper;
-        this.propostaToPropostaResponseMapper = propostaToPropostaResponseMapper;
-    }
 
     @PostMapping()
     public ResponseEntity<PropostaResponse> criarProposta(@RequestBody PropostaRequest request) {
