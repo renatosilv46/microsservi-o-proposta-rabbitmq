@@ -1,20 +1,17 @@
 package com.proposta.app.application.core.service;
 
-import com.proposta.app.adapters.outbounds.message.PropostasNaoIntegradasImpl;
 import com.proposta.app.application.core.domain.Proposta;
 import com.proposta.app.application.ports.inbounds.PropostaService;
 import com.proposta.app.application.ports.outbounds.NotificacaoRabbitService;
 import com.proposta.app.application.ports.outbounds.PropostaRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-
 
 import java.util.List;
 
+@Slf4j
 public class PropostaServiceImpl implements PropostaService {
 
-    private static final Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
     private static final String IDENTIFICADOR_OPERACAO_PROPOSTA_SERVICE = "[PropostaServiceImpl]";
 
     private final PropostaRepository propostaRepository;

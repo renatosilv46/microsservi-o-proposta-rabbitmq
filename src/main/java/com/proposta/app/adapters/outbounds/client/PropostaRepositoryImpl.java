@@ -6,18 +6,17 @@ import com.proposta.app.adapters.outbounds.models.PropostaEntity;
 import com.proposta.app.application.core.domain.Proposta;
 import com.proposta.app.application.ports.outbounds.PropostaRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Repository
 public class PropostaRepositoryImpl implements PropostaRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(PropostaRepositoryImpl.class);
     private static final String IDENTIFICADOR_OPERACAO_PROPOSTA_REPOSITORY = "[PropostaRepository]";
 
     private final PropostaRepositoryJpa propostaRepositoryJpa;

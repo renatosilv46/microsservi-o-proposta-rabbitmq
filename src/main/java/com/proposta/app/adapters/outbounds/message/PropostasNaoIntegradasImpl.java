@@ -4,18 +4,17 @@ import com.proposta.app.application.core.domain.Proposta;
 import com.proposta.app.application.ports.outbounds.NotificacaoRabbitService;
 import com.proposta.app.application.ports.outbounds.PropostaRepository;
 import com.proposta.app.application.ports.outbounds.PropostasNaoIntegradas;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Component
 public class PropostasNaoIntegradasImpl implements PropostasNaoIntegradas {
 
-    private static Logger log = LoggerFactory.getLogger(PropostasNaoIntegradasImpl.class);
     private static final String IDENTIFICADOR_SERVICO_PROPOSTAS_NAO_INTEGRADAS =
             "[PropostasNaoIntegradas]";
 

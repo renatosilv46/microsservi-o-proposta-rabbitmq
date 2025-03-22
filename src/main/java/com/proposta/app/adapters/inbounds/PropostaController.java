@@ -6,8 +6,7 @@ import com.proposta.app.adapters.inbounds.models.PropostaRequest;
 import com.proposta.app.adapters.inbounds.models.PropostaResponse;
 import com.proposta.app.application.ports.inbounds.PropostaService;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,12 +14,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/proposta")
 public class PropostaController {
 
-    private static final Logger log = LoggerFactory.getLogger(PropostaController.class);
     private static final String IDENTIFICADOR_OPERACAO_PROPOSTA_CONTROLLER = "[PropostaController]";
 
     private final PropostaService propostaService;
