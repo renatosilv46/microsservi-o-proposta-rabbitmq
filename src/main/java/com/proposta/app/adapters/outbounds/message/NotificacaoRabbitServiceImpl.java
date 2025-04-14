@@ -14,7 +14,7 @@ public class NotificacaoRabbitServiceImpl implements NotificacaoRabbitService {
 
     private static final String IDENTIFICADOR_OPERACAO_PROPOSTA_REPOSITORY = "[NotificacaoRabbitService]";
 
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
     @Override
     public void notificar(Proposta proposta, String exchange) {

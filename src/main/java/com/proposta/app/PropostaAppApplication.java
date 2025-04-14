@@ -1,13 +1,14 @@
 package com.proposta.app;
 
-import com.proposta.app.adapters.outbounds.client.PropostaRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 
 @EnableScheduling
+@EnableWebSocketMessageBroker
 @SpringBootApplication
 public class PropostaAppApplication {
 
